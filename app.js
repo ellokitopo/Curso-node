@@ -1,17 +1,15 @@
 const express = require("express");
 const app = express();
 
-require("dotenv").config();
+require("dotenv").config()
 
 const port = process.env.PORT || 3000;
 
 //Conexion a base de datos
 const mongoose = require("mongoose");
 
-const user = "youtubevet";
-const password = "Ujf74IK5PDpujzuA";
-const dbname ="veterinaria";
-const uri = `mongodb+srv://${user}:${password}@cluster0.eyxv1.mongodb.net/${dbname}?retryWrites=true&w=majority`;
+
+const uri = `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@cluster0.eyxv1.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`;
 
 async function main() {
   await mongoose.connect(uri);
