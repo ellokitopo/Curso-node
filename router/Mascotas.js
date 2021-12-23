@@ -17,7 +17,20 @@ router.get("/", async (req, res) => {
         console.log(error)
     }
 
-    
+    router.get("/crear", (req, res) =>{
+        res.render("crear")
+    })    
+});
+
+router.post("/", async(req,res) =>{
+    const body = req.body
+    try{
+        const mascotaDB = new Mascota(body)
+        await mascotaDB.save()
+        console.log("Mascota creada:", mascotaDB);
+    }   catch (error){
+        console.log(error)
+    }
 });
 
 module.exports = router;
